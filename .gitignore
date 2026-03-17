@@ -1,0 +1,36 @@
+# Data files (competition-provided, not redistributable)
+*.csv
+*.csv.gz
+*.tsv
+*.tsv.gz
+
+# Output
+submission_*.csv
+*.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Environment
+.env
+.venv/
+venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
