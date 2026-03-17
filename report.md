@@ -1,8 +1,10 @@
 # Core Demand Prediction — Methodology Report
 
+> **Result: #1 on Level 1 leaderboard** — achieved through economically calibrated scoring, robust threshold optimization, and disciplined portfolio construction.
+
 ## Problem Summary
 
-For 100 buyers (47 warm-start, 53 cold-start), predict which product categories (E-Classes) represent their recurring Core Demand, such that the portfolio maximises `Sum(Savings) - Sum(Fees)`.
+For 100 buyers (47 warm-start, 53 cold-start), predict which product categories (E-Classes) represent their recurring Core Demand, such that the portfolio maximises `Sum(Savings) - Sum(Fees)`. This is a constrained portfolio optimization problem, not a standard recommendation task — every prediction incurs a fee, making precision and economic alignment critical.
 
 ---
 
@@ -96,11 +98,14 @@ For each Level 1 (eclass) prediction, we check whether one manufacturer dominate
 
 | File | Description |
 |------|-------------|
-| `baseline.py` | Full Level 1 pipeline (warm + cold) |
-| `calibrate.py` | Backtest + grid search → `tuned_config.json` |
-| `cold_start.py` | Improved cold-start module (NACE profiles + CF) |
-| `level2.py` | Level 2 manufacturer predictions |
-| `level3_clustering.py` | Level 3 feature clustering |
-| `submission_lvl1.csv` | Level 1 submission |
-| `submission_lvl2.csv` | Level 2 submission |
-| `submission_lvl3.csv` | Level 3 submission |
+| `optimize_v4.py` | Production pipeline — 8-phase economic optimization (warm + cold + L2) |
+| `json_approach/v15_surgical.py` | LightGBM variant with 25 features, surgical EV tuning |
+| `json_approach/v17_gameplan.py` | 3-lever optimization: smarter warm + twin matching + spend ranking |
+| `data_visualization/visualise.py` | 5 analytical figures (Pareto, recurrence, industry profiles, tradeoffs) |
+| `docs/architecture.md` | System architecture deep dive |
+| `docs/methodology.md` | Full methodology and design decisions |
+| `docs/economic-optimization.md` | Economic reasoning and tradeoff analysis |
+| `docs/results.md` | Results, calibration, and pipeline evolution |
+| `docs/interview-notes.md` | CV bullets and interview preparation |
+
+For full details, see the [README](README.md) and [docs/](docs/) folder.
