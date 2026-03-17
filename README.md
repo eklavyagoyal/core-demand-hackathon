@@ -1,8 +1,11 @@
 # Core Demand Prediction Engine
 
-**An economically calibrated system for predicting recurring enterprise procurement demand, maximizing net savings under fee constraints.**
+### An economically calibrated system for predicting recurring enterprise procurement demand, maximizing net savings under fee constraints.
 
-> 🏆 **#1 on Level 1 leaderboard** at the end of the hackathon — built through disciplined economic modeling, not through overfitting or hyperparameter tricks.
+[![Hackathon](https://img.shields.io/badge/%F0%9F%8F%86_Hackathon-Level_1_%E2%80%93_%231-gold?style=for-the-badge)](report.md)
+[![Precision](https://img.shields.io/badge/Warm_Precision-92.8%25-blue?style=for-the-badge)](#key-results)
+[![Coverage](https://img.shields.io/badge/Buyers_Covered-100%2F100-brightgreen?style=for-the-badge)](#key-results)
+[![Predictions](https://img.shields.io/badge/L1_Predictions-2%2C205-purple?style=for-the-badge)](#key-results)
 
 ---
 
@@ -124,7 +127,10 @@ Buyers with 2+ years of transaction history. The signal is **purchase recurrence
 - `rank_score` — composite signal: `avg_monthly_spend × (1 + recency_ratio)`
 
 **Decision rule:** Include a prediction if:
-$$\text{savings\_rate} \times \text{expected\_spend} > \text{fee} \times \text{threshold\_mult}$$
+
+$$sr \times \mathbb{E}[\text{spend}] > \text{fee} \times \lambda$$
+
+where $sr$ = savings rate, $\mathbb{E}[\text{spend}]$ = expected spend in the prediction window, and $\lambda$ = threshold multiplier.
 
 This replaces a naive top-k cutoff with an *economically motivated threshold*: only predict categories where expected savings exceed expected cost.
 
